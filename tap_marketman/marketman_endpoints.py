@@ -21,8 +21,6 @@ def get_guid():
 
     response = client.post(url, headers=headers, data=payload)
 
-    print(response.text.encode('utf8'))
-
 
 def get_inventory_items():
     url = "https://api.marketman.com/v3/buyers/inventory/GetInventoryItems"
@@ -34,8 +32,6 @@ def get_inventory_items():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
-
-    print(response.text.encode('utf8'))
 
 
 def get_inventory_counts():
@@ -51,8 +47,6 @@ def get_inventory_counts():
 
     response = client.post(url, headers=headers, data=payload)
 
-    print(response.text.encode('utf8'))
-
 
 def get_menu_items():
     url = "https://api.marketman.com/v3/buyers/inventory/GetMenuItems"
@@ -65,8 +59,6 @@ def get_menu_items():
 
     response = client.post(url, headers=headers, data=payload)
 
-    print(response.text.encode('utf8'))
-
 
 def get_preps():
     url = "https://api.marketman.com/v3/buyers/inventory/GetPreps"
@@ -78,8 +70,6 @@ def get_preps():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
-
-    print(response.text.encode('utf8'))
 
 
 def get_transfers():
@@ -95,8 +85,6 @@ def get_transfers():
 
     response = client.post(url, headers=headers, data=payload)
 
-    print(response.text.encode('utf8'))
-
 
 def get_waste_events():
     url = "https://api.marketman.com/v3/buyers/inventory/GetWasteEvents"
@@ -111,8 +99,6 @@ def get_waste_events():
 
     response = client.post(url, headers=headers, data=payload)
 
-    print(response.text.encode('utf8'))
-
 
 def get_vendors():
     url = "https://api.marketman.com/v3/vendors/partneraccounts/GetAuthorisedAccounts"
@@ -120,8 +106,6 @@ def get_vendors():
     payload = {}
 
     response = client.post(url, headers=headers, data=payload)
-
-    print(response.text.encode('utf8'))
 
 
 def get_orders_by_sent_date():
@@ -136,5 +120,3 @@ def get_orders_by_sent_date():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
-
-    print(response.text.encode('utf8'))
