@@ -46,6 +46,20 @@ def get_token():
 session_token = get_token()
 
 
+def get_guid():
+    url = "https://api.marketman.com/v3/buyers/partneraccounts/GetAuthorisedAccounts"
+
+    payload = {}
+    headers = {
+        'Content-Type': 'application/json',
+        'AUTH_TOKEN': session_token
+    }
+
+    response = client.post(url, headers=headers, data=payload)
+
+    print(response.text.encode('utf8'))
+
+
 def get_inventory_items():
     url = "https://api.marketman.com/v3/buyers/inventory/GetInventoryItems"
 
