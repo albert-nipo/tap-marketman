@@ -1,6 +1,6 @@
 import requests
 import json
-import dotenv
+from dotenv import load_dotenv
 import os
 from datetime import date, datetime, timezone, timedelta
 
@@ -11,8 +11,9 @@ from datetime import date, datetime, timezone, timedelta
 # PASSWORD = args.config['password']
 
 # The code below is for testing with Pytest.
-APIKey = json.loads(os.getenv("gregorys"))['APIKey']
-APIPassword = json.loads(os.getenv("gregorys"))['APIPassword']
+load_dotenv()
+APIKey = os.getenv('APIKey')
+APIPassword = os.getenv('APIPassword')
 
 
 def create_session():
