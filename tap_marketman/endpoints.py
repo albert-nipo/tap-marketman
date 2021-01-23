@@ -4,6 +4,7 @@ import pprint
 import singer
 from datetime import date, datetime, timezone, timedelta
 from tap_marketman.service import create_session, get_token
+from tap_marketman.helpers import create_guid_list
 
 
 client = create_session()
@@ -23,6 +24,10 @@ def get_guid():
     json_response = response.json()
 
     return json_response
+
+
+guid_data = get_guid()
+guid_list = create_guid_list(guid_data)
 
 
 def get_inventory_items():
