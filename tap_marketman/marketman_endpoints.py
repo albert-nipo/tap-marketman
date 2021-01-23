@@ -20,6 +20,9 @@ def get_guid():
     payload = {}
 
     response = client.post(url, headers=headers, data=payload)
+    json_response = response.json()
+
+    return json_response
 
 
 def get_inventory_items():
