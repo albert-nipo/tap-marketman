@@ -1,12 +1,12 @@
 import pytest
-from tap_marketman.helpers import *
-from tap_marketman.endpoints import get_guid
+import tap_marketman.helpers as helpers
+import tap_marketman.endpoints as endpoints
 
 
 @pytest.mark.vcr()
 def test_create_guid_list():
-    guid_data = get_guid()
-    guid_list = create_guid_list(guid_data)
+    guid_data = endpoints.get_guid()
+    guid_list = helpers.create_guid_list(guid_data)
 
     assert isinstance(guid_list, list)
     assert len(guid_list) > 0
@@ -15,8 +15,8 @@ def test_create_guid_list():
 
 @pytest.mark.vcr()
 def test_extract_guid_buyers():
-    guid_data = get_guid()
-    guid_list = extract_guid_buyers(guid_data)
+    guid_data = endpoints.get_guid()
+    guid_list = helpers.extract_guid_buyers(guid_data)
 
     assert isinstance(guid_list, list)
     assert len(guid_list) > 0
@@ -28,15 +28,15 @@ def test_extract_guid_buyers():
         'Chains': []
     }
 
-    guid_list_empty = extract_guid_buyers(guid_data_empty)
+    guid_list_empty = helpers.extract_guid_buyers(guid_data_empty)
 
     assert guid_list_empty == []
 
 
 @pytest.mark.vcr()
 def test_extract_guid_vendors():
-    guid_data = get_guid()
-    guid_list = extract_guid_vendors(guid_data)
+    guid_data = endpoints.get_guid()
+    guid_list = helpers.extract_guid_vendors(guid_data)
 
     assert isinstance(guid_list, list)
     assert guid_list == []
@@ -52,7 +52,7 @@ def test_extract_guid_vendors():
         'Chains': []
     }
 
-    guid_list_vendors = extract_guid_vendors(guid_data_vendors)
+    guid_list_vendors = helpers.extract_guid_vendors(guid_data_vendors)
 
     assert isinstance(guid_list_vendors, list)
     assert len(guid_list_vendors) > 0
@@ -61,8 +61,8 @@ def test_extract_guid_vendors():
 
 @pytest.mark.vcr()
 def test_extract_guid_chains():
-    guid_data = get_guid()
-    guid_list = extract_guid_chains(guid_data)
+    guid_data = endpoints.get_guid()
+    guid_list = helpers.extract_guid_chains(guid_data)
 
     assert isinstance(guid_list, list)
     assert len(guid_list) > 0
@@ -74,6 +74,6 @@ def test_extract_guid_chains():
         'Chains': []
     }
 
-    guid_list_empty = extract_guid_chains(guid_data_empty)
+    guid_list_empty = helpers.extract_guid_chains(guid_data_empty)
 
     assert guid_list_empty == []
