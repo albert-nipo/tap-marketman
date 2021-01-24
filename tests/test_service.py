@@ -1,6 +1,4 @@
 import pytest
-import pytest_cov
-import pytest_vcr
 from tap_marketman.service import *
 
 def test_environment_variables():
