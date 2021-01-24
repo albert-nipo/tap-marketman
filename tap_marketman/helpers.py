@@ -1,6 +1,3 @@
-import json
-
-
 def create_guid_list(guid_data):
     buyers = extract_guid_buyers(guid_data)
     vendors = extract_guid_vendors(guid_data)
