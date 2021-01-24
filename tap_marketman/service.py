@@ -37,4 +37,3 @@ def get_token():
     new_token = response.json()['Token']
 
     return new_token
-
