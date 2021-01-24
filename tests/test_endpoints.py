@@ -1,6 +1,5 @@
 import pytest
-import pytest_cov
-import pytest_vcr
+import requests
 from tap_marketman.endpoints import *
 
 
