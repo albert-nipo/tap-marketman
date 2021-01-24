@@ -1,12 +1,12 @@
 import json
 import singer
 from datetime import date, datetime, timezone, timedelta
-from tap_marketman.service import create_session, get_token
-from tap_marketman.helpers import create_guid_list
+import tap_marketman.service as service
+import tap_marketman.helpers as helpers
 
 
-client = create_session()
-session_token = get_token()
+client = service.create_session()
+session_token = service.get_token()
 headers = {
     'Content-Type': 'application/json',
     'AUTH_TOKEN': session_token
@@ -25,7 +25,7 @@ def get_guid():
 
 
 guid_data = get_guid()
-guid_list = create_guid_list(guid_data)
+guid_list = helpers.create_guid_list(guid_data)
 
 
 def get_inventory_items():
@@ -38,6 +38,8 @@ def get_inventory_items():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
+
+    return response
 
 
 def get_inventory_counts():
@@ -53,6 +55,8 @@ def get_inventory_counts():
 
     response = client.post(url, headers=headers, data=payload)
 
+    return response
+
 
 def get_menu_items():
     url = "https://api.marketman.com/v3/buyers/inventory/GetMenuItems"
@@ -65,6 +69,8 @@ def get_menu_items():
 
     response = client.post(url, headers=headers, data=payload)
 
+    return response
+
 
 def get_preps():
     url = "https://api.marketman.com/v3/buyers/inventory/GetPreps"
@@ -76,6 +82,8 @@ def get_preps():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
+
+    return response
 
 
 def get_transfers():
@@ -91,6 +99,8 @@ def get_transfers():
 
     response = client.post(url, headers=headers, data=payload)
 
+    return response
+
 
 def get_waste_events():
     url = "https://api.marketman.com/v3/buyers/inventory/GetWasteEvents"
@@ -105,6 +115,8 @@ def get_waste_events():
 
     response = client.post(url, headers=headers, data=payload)
 
+    return response
+
 
 def get_vendors():
     url = "https://api.marketman.com/v3/vendors/partneraccounts/GetAuthorisedAccounts"
@@ -112,6 +124,8 @@ def get_vendors():
     payload = {}
 
     response = client.post(url, headers=headers, data=payload)
+
+    return response
 
 
 def get_orders_by_sent_date():
@@ -126,3 +140,5 @@ def get_orders_by_sent_date():
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
+
+    return response
