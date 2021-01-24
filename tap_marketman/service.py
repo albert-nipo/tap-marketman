@@ -2,7 +2,6 @@ import requests
 import json
 from dotenv import load_dotenv
 import os
-from datetime import date, datetime, timezone, timedelta
 
 
 # This code is for production.
