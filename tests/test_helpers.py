@@ -1,6 +1,4 @@
 import pytest
-import pytest_cov
-import pytest_vcr
 from tap_marketman.helpers import *
 from tap_marketman.endpoints import get_guid
 
