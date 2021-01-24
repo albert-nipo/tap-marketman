@@ -1,6 +1,4 @@
-import requests
 import json
-import pprint
 import singer
 from datetime import date, datetime, timezone, timedelta
 from tap_marketman.service import create_session, get_token
