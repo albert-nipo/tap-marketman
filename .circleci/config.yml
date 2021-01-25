@@ -3,8 +3,15 @@ jobs:
     executor: python/default
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "poetry.lock" }}
       - python/install-packages:
           pkg-manager: poetry
+      - save_cache:
+          key: deps-{{ checksum "poetry.lock" }}
+          paths:
+            - /home/circleci/project/poetry.lock
       - run:
           command: |
             poetry run pytest
