@@ -11,7 +11,7 @@ jobs:
       - save_cache:
           key: deps-{{ checksum "poetry.lock" }}
           paths:
-            - /home/circleci/project/poetry.lock
+            - home/circleci/.cache/pypoetry/virtualenvs
       - run:
           command: |
             poetry run pytest
