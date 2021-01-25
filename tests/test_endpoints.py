@@ -4,6 +4,8 @@ import tap_marketman.endpoints as endpoints
 import tap_marketman.service as service
 
 
+test = 'wow'
+
 def test_create_session():
     client = service.create_session()
 
