@@ -2,6 +2,7 @@ import pytest
 import requests
 import tap_marketman.service as service
 
+
 def test_environment_variables():
     assert isinstance(service.APIKey, str)
     assert isinstance(service.APIPassword, str)
