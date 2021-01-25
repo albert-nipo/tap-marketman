@@ -28,18 +28,19 @@ guid_data = get_guid()
 guid_list = helpers.create_guid_list(guid_data)
 
 
-def get_inventory_items():
+def get_inventory_items(guid):
     url = "https://api.marketman.com/v3/buyers/inventory/GetInventoryItems"
 
     payload_dict = {
-        'BuyerGuid': 'string'
+        'BuyerGuid': guid
     }
 
     payload = json.dumps(payload_dict)
 
     response = client.post(url, headers=headers, data=payload)
+    json_response = response.json()
 
-    return response
+    return json_response['Items']
 
 
 def get_inventory_counts():
