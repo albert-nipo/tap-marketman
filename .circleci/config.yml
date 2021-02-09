@@ -3,12 +3,19 @@ jobs:
     executor: python/default
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - python/install-packages:
           pkg-manager: poetry
+      - save_cache:
+          key: deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - /home/circleci/.cache/pypoetry/virtualenvs
       - run:
           command: |
-            poetry run pytest --version
-          name: Test it
+            poetry run pytest
+          name: Run Tests
 orbs:
   python: circleci/python@1.3.2
 version: 2.1
