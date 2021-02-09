@@ -1,13 +1,18 @@
 import json
 import requests
+import os
+from dotenv import load_dotenv
 from tap_marketman.helpers import create_guid_list
 
 class MarketManClient:
     BASE_URL = 'https://api.marketman.com/v3'
 
-    def __init__(self, apikey, apipassword):
+    def __init__(self):
+        load_dotenv()
+        self.APIKey = os.getenv('APIKey')
+        self.APIPassword = os.getenv('APIPassword')
         self._client = requests.Session()
-        self.auth_token = self.get_auth_token(apikey, apipassword)
+        self.auth_token = self.get_auth_token()
         self._client.headers.update({
             'Content-Type': 'application/json',
             'AUTH_TOKEN': self.auth_token
@@ -15,11 +20,11 @@ class MarketManClient:
         self.guid = self.get_guid()
 
 
-    def get_auth_token(self, apikey, apipassword):
+    def get_auth_token(self):
         url = f'{self.BASE_URL}/buyers/auth/GetToken'
         payload_dict = {
-            'APIKey': apikey,
-            'APIPassword': apipassword
+            'APIKey': self.APIKey,
+            'APIPassword': self.APIPassword
         }
 
         payload = json.dumps(payload_dict)
