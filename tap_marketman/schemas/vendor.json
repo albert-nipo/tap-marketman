@@ -1,8 +1,8 @@
 {
-    {
     "type": ["object", "null"],
     "additionalProperties": false,
     "properties": {
         "VendorName": { "type": ["string", "null"] },
-        "VendorGuid": { "type": ["string", "null"] },
+        "VendorGuid": { "type": ["string", "null"] }
+    }
 }
