@@ -1,0 +1,40 @@
+{
+    "type": ["object", "null"],
+    "additionalProperties": false,
+    "properties": {
+        "ID": { "type": ["integer", "null"] },
+        "Name": { "type": ["string", "null"] },
+        "UpdateDate": { "type": ["string", "null"], "format": "date-time" },
+        "CategoryID": { "type": ["integer", "null"] },
+        "CategoryName": { "type": ["string", "null"] },
+        "POSCodes": { "type": ["string", "null"] },
+        "SalesPriceWithoutVAT": { "type": ["number", "null"] },
+        "SalesPriceWithVAT": { "type": ["number", "null"] },
+        "Type": { "type": ["string", "null"] },
+        "MinOnHand": { "type": ["number", "null"] },
+        "ParLevel": { "type": ["number", "null"] },
+        "BOMPrice": { "type": ["number", "null"] },
+        "BOMPriceFC": { "type": ["number", "null"] },
+        "MaxFC": { "type": ["number", "null"] },
+        "PrepTime": { "type": ["number", "null"] },
+        "CookTime": { "type": ["number", "null"] },
+        "CookingInstructions": { "type": ["string", "null"] },
+        "AboutTheItem": { "type": ["string", "null"] },
+        "SubItems": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "properties": {
+                    "ItemID": { "type": ["string", "null"] },
+                    "ItemName": { "type": ["string", "null"] },
+                    "ItemTypeName": { "type": ["string", "null"] },
+                    "UsageNet": { "type": ["number", "null"] },
+                    "LossPercent": { "type": ["number", "null"] },
+                    "ActualUsage": { "type": ["number", "null"] }
+                }
+            }
+        },
+        "IsDeleted": { "type": "boolean" }
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "type": ["object", "null"],
+  "additionalProperties": false,
+  "properties": {
+    "ID": { "type": ["string", "null"] },
+    "BuyerName": { "type": ["string", "null"] },
+    "BuyerGuid": { "type": ["string", "null"] },
+    "DateUTC": { "type": ["string", "null"], "format": "date-time" },
+    "TotalPriceWithoutVAT": { "type": ["number", "null"] },
+    "Commments": { "type": ["string", "null"] },
+    "Lines": {
+      "type": ["array", "null"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "LineID": { "type": ["string", "null"] },
+          "ItemID": { "type": ["string", "null"] },
+          "ItemName": { "type": ["string", "null"] },
+          "Quantity": { "type": ["number", "null"] },
+          "TotalPriceWithoutVAT": { "type": ["number", "null"] },
+          "UOMID": { "type": ["string", "null"] },
+          "UOMName": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "type": ["object", "null"],
+    "additionalProperties": false,
+    "properties": {
+        "ID": { "type": ["string", "null"] },
+        "Name": { "type": ["string", "null"] },
+        "IsSelfStock": { "type": "boolean" },
+        "CategoryID": { "type": ["integer", "null"] },
+        "CategoryName": { "type": ["string", "null"] },
+        "UOMName": { "type": ["string", "null"] },
+        "UOMID": { "type": ["integer", "null"] },
+        "MinOnHand": { "type": ["number", "null"] },
+        "ParLevel": { "type": ["number", "null"] },
+        "StorageNames": {
+        "type": ["array", "null"],
+        "items": {
+            "type": ["string", "null"]
+        }
+        },
+        "StorageIDs": {
+        "type": ["array", "null"],
+        "items": {
+            "type": ["integer", "null"]
+        }
+        },
+        "ProdQuantity": { "type": ["number", "null"] },
+        "OnHand": { "type": ["number", "null"] },
+        "BOMPrice": { "type": ["number", "null"] },
+        "SubItems": {
+        "type": ["array", "null"],
+        "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+            "ItemID": { "type": ["string", "null"] },
+            "ItemName": { "type": ["string", "null"] },
+            "ItemTypeName": { "type": ["string", "null"] },
+            "UsageNet": { "type": ["number", "null"] },
+            "LossPercent": { "type": ["number", "null"] },
+            "ActualUsage": { "type": ["number", "null"] }
+            }
+        }
+        },
+        "UpdateDate": { "type": ["string", "null"], "format": "date-time" },
+        "IsDeleted": { "type": "boolean" }
+    }
+}

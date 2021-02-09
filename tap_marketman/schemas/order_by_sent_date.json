@@ -1,0 +1,41 @@
+{
+    "type": ["object", "null"],
+    "additionalProperties": false,
+    "properties": {
+        "OrderNumber": { "type": ["string", "null"] },
+        "BuyerName": { "type": ["string", "null"] },
+        "BuyerGuid": { "type": ["string", "null"] },
+        "VendorName": { "type": ["string", "null"] },
+        "VendorGuid": { "type": ["string", "null"] },
+        "DeliveryDateUTC": { "type": ["string", "null"], "format": "date-time" },
+        "SentDateUTC": { "type": ["string", "null"], "format": "date-time" },
+        "PriceTotalWithoutVAT": { "type": ["number", "null"] },
+        "PriceTotalWithVAT": { "type": ["number", "null"] },
+        "Comments": { "type": ["string", "null"] },
+        "OrderStatus": { "type": ["string", "null"] },
+        "Items": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "properties": {
+                    "ItemName": { "type": ["string", "null"] },
+                    "SKU": { "type": ["string", "null"] },
+                    "Quantity": { "type": ["number", "null"] },
+                    "Price": { "type": ["number", "null"] },
+                    "PriceTotal": { "type": ["number", "null"] },
+                    "BarcodeManufacture": { "type": ["string", "null"] },
+                    "CatalogItemID": { "type": ["integer", "null"] },
+                    "CatalogItemCode": { "type": ["integer", "null"] },
+                    "TaxLevelID": { "type": ["integer", "null"] },
+                    "TaxValue": { "type": ["number", "null"] },
+                    "PriceTotalWithVat": { "type": ["number", "null"] },
+                    "ItemMeasureTypeId": { "type": ["integer", "null"] },
+                    "ItemMeasureTypeName": { "type": ["string", "null"] },
+                    "PackQuantity": { "type": ["integer", "null"] },
+                    "PackPerCase": { "type": ["integer", "null"] }
+                }
+            }
+        }
+    }
+}

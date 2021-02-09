@@ -1,0 +1,58 @@
+{
+    "type": ["object", "null"],
+    "additionalProperties": false,
+    "properties": {
+        "ID": { "type": ["string", "null"] },
+        "Name": { "type": ["string", "null"] },
+        "UpdateDate": { "type": ["string", "null"], "format": "date-time" },
+        "CategoryID": { "type": ["integer", "null"] },
+        "CategoryName": { "type": ["string", "null"] },
+        "UOMName": { "type": ["string", "null"] },
+        "UOMID": { "type": ["integer", "null"] },
+        "MinOnHand": { "type": ["number", "null"] },
+        "ParLevel": { "type": ["number", "null"] },
+        "StorageNames": { 
+            "type": ["array", "null"],
+            "items": {
+                "type": ["string", "null"]
+            } 
+        },
+        "StorageIDs": {
+          "type": ["array", "null"],
+          "items": {
+            "type": ["integer", "null"]
+          }
+        },
+        "OnHand": { "type": ["number", "null"] },
+        "BOMPrice": { "type": ["number", "null"] },
+        "DebitAccountName": { "type": ["string", "null"] },
+        "PurchaseItems": {
+            "type": ["array", "null"],
+            "items": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "properties": {
+                    "Name": { "type": ["string", "null"] },
+                    "SupplierName": { "type": ["string", "null"] },
+                    "VendorName": { "type": ["string", "null"] },
+                    "VendorGuid": { "type": ["string", "null"] },
+                    "PackQty": { "type": ["number", "null"] },
+                    "PacksPerCase": { "type": ["number", "null"] },
+                    "UOMName": { "type": ["string", "null"] },
+                    "UOMID": { "type": ["integer", "null"] },
+                    "ProductCode": { "type": ["string", "null"] },
+                    "Price": { "type": ["number", "null"] },
+                    "MinOrderQty": { "type": ["number", "null"] },
+                    "PriceType": { "type": ["string", "null"] },
+                    "CatalogItemCode": { "type": ["integer", "null"] },
+                    "TaxLevelID": { "type": ["integer", "null"] },
+                    "TaxValue": { "type": ["number", "null"] },
+                    "PriceWithVat": { "type": ["number", "null"] },
+                    "ScanBarCode": { "type": ["string", "null"] },
+                    "Ratio": { "type": ["number", "null"] }
+                }
+            }
+        },
+        "IsDeleted": { "type": "boolean" }
+    }
+}
