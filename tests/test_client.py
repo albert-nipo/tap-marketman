@@ -1,23 +1,16 @@
 import pytest
 from tap_marketman.client import MarketManClient
 
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-apikey = os.getenv('APIKey')
-apipassword = os.getenv('APIPassword')
-
 @pytest.mark.vcr()
 def test_get_auth_token():
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
 
     assert isinstance(client.auth_token, str)
 
 
 @pytest.mark.vcr()
 def test_get_guid():
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     guid_list = client.get_guid()
 
     assert isinstance(guid_list, list)
@@ -26,7 +19,7 @@ def test_get_guid():
 @pytest.mark.vcr()
 def test_get_inventory_items():
     guid = 'edd590e6d4ea4f8fada26bc912c84525'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_inventory_items(guid=guid)
 
     inventory = response['Items']
@@ -79,7 +72,7 @@ def test_get_inventory_items():
 @pytest.mark.vcr()
 def test_get_inventory_counts():
     guid = 'edd590e6d4ea4f8fada26bc912c84525'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_inventory_counts(guid=guid, 
                                            start_time='2019/01/01 00:00:00', 
                                            end_time='2019/01/07 00:00:00')
@@ -107,7 +100,7 @@ def test_get_inventory_counts():
 @pytest.mark.vcr()
 def test_get_menu_items():
     guid = '0b0a566dc9704123bb603be77a085098'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_menu_items(guid=guid)
 
     menu_items = response['Items']
@@ -146,7 +139,7 @@ def test_get_menu_items():
 @pytest.mark.vcr()
 def test_get_preps():
     guid = '0b0a566dc9704123bb603be77a085098'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_preps(guid=guid)
 
     items = response['Items']
@@ -189,7 +182,7 @@ def test_get_preps():
 @pytest.mark.vcr()
 def test_get_transfers():
     guid = '0b0a566dc9704123bb603be77a085098'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_transfers(guid=guid, 
                                     start_time='2019/01/01 00:00:00', 
                                     end_time='2020/01/07 00:00:00')
@@ -221,7 +214,7 @@ def test_get_transfers():
 @pytest.mark.vcr()
 def test_get_waste_events():
     guid = '0b0a566dc9704123bb603be77a085098'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_waste_events(guid=guid,
                                       start_time='2019/01/01 00:00:00',
                                       end_time='2019/01/07 00:00:00')
@@ -250,7 +243,7 @@ def test_get_waste_events():
 @pytest.mark.vcr()
 def test_get_orders_by_sent_date():
     guid = '0b0a566dc9704123bb603be77a085098'
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_orders_by_sent_date(guid=guid,
                                               start_time='2019/01/01 00:00:00',
                                               end_time='2019/01/07 00:00:00')
@@ -291,7 +284,7 @@ def test_get_orders_by_sent_date():
 
 @pytest.mark.vcr()
 def test_get_vendors():
-    client = MarketManClient(apikey=apikey, apipassword=apipassword)
+    client = MarketManClient()
     response = client.get_vendors()
 
     vendors = response['Vendors']
