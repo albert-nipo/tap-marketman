@@ -226,6 +226,11 @@
           },
           "IsDeleted": {
             "type": "boolean"
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -243,7 +248,8 @@
               "ID"
             ],
             "forced-replication-method": "FULL_TABLE",
-            "inclusion": "available"
+            "inclusion": "available",
+            "selected": true
           }
         },
         {
@@ -385,6 +391,15 @@
           "breadcrumb": [
             "properties",
             "IsDeleted"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
           ],
           "metadata": {
             "inclusion": "available"
@@ -558,6 +573,11 @@
           },
           "IsDeleted": {
             "type": "boolean"
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -757,6 +777,15 @@
           "metadata": {
             "inclusion": "available"
           }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
         }
       ]
     },
@@ -917,6 +946,11 @@
           },
           "IsDeleted": {
             "type": "boolean"
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -1089,6 +1123,15 @@
           "metadata": {
             "inclusion": "available"
           }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
         }
       ]
     },
@@ -1232,6 +1275,11 @@
               "array",
               "null"
             ]
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -1310,6 +1358,15 @@
           "breadcrumb": [
             "properties",
             "Lines"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
           ],
           "metadata": {
             "inclusion": "available"
@@ -1432,6 +1489,11 @@
               "array",
               "null"
             ]
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -1541,6 +1603,15 @@
           "metadata": {
             "inclusion": "available"
           }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
         }
       ]
     },
@@ -1641,6 +1712,11 @@
               "array",
               "null"
             ]
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -1719,6 +1795,15 @@
           "breadcrumb": [
             "properties",
             "Lines"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
           ],
           "metadata": {
             "inclusion": "available"
@@ -1902,6 +1987,11 @@
               "array",
               "null"
             ]
+          },
+          "GUID": {
+            "type": [
+              "string"
+            ]
           }
         },
         "type": [
@@ -2025,6 +2115,15 @@
           "breadcrumb": [
             "properties",
             "Items"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "GUID"
           ],
           "metadata": {
             "inclusion": "available"
