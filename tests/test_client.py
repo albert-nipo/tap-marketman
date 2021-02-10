@@ -1,6 +1,7 @@
 import pytest
 from tap_marketman.client import MarketManClient
 
+
 @pytest.mark.vcr()
 def test_get_auth_token():
     client = MarketManClient()
