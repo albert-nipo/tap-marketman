@@ -4,6 +4,7 @@ from singer import Transformer, metadata
 from tap_marketman.client import MarketManClient
 from tap_marketman.streams import STREAMS
 
+
 LOGGER = singer.get_logger()
 
 
@@ -36,11 +37,14 @@ def sync(config, state, catalog):
 
                 for record in stream_obj.records_sync(guid=guid):
                     transformed_record = transformer.transform(
-                        record, stream_schema, stream_metadata)
+                        record, stream_schema, stream_metadata
+                    )
+
                     LOGGER.info(f"Writing record: {transformed_record}")
+
                     singer.write_record(
                         tap_stream_id,
-                        transformed_record,
+                        transformed_record
                     )
 
                 current_time = datetime.now(timezone.utc)
@@ -54,7 +58,6 @@ def sync(config, state, catalog):
 
                 LOGGER.info(
                     f'Bookmark created for {tap_stream_id} stream = {key}: {current_time}')
-
 
     state = singer.set_currently_syncing(state, None)
     singer.write_state(state)
