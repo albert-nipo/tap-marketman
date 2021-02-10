@@ -35,6 +35,7 @@
                 }
             }
         },
-        "IsDeleted": { "type": "boolean" }
+        "IsDeleted": { "type": "boolean" },
+        "GUID": { "type": ["string"] }
     }
 }

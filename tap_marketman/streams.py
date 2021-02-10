@@ -36,6 +36,7 @@ class InventoryItem(FullTableStream):
         inventory_items = response['Items']
 
         for inventory_item in inventory_items:
+            inventory_item['GUID'] = current_guid
             yield inventory_item
 
 
@@ -50,6 +51,7 @@ class MenuItem(FullTableStream):
         menu_items = response['Items']
 
         for menu_item in menu_items:
+            menu_item['GUID'] = current_guid
             yield menu_item
 
 
@@ -64,6 +66,7 @@ class Prep(FullTableStream):
         preps = response['Items']
 
         for prep in preps:
+            prep['GUID'] = current_guid
             yield prep
 
 
@@ -98,6 +101,7 @@ class InventoryCount(FullTableStream):
                                                     end_time=end_time)
         inventory_counts = response['InventoryCounts']
         for inventory_count in inventory_counts:
+            inventory_count['GUID'] = current_guid
             yield inventory_count
 
 
@@ -121,6 +125,7 @@ class Transfer(FullTableStream):
                                              end_time=end_time)
         transfers = response['Transfer']
         for transfer in transfers:
+            transfer['GUID'] = current_guid
             yield transfer
 
 
@@ -142,9 +147,10 @@ class WasteEvent(FullTableStream):
         response = self.client.get_waste_events(guid=current_guid,
                                                 start_time=start_time,
                                                 end_time=end_time)
-        waster_events = response['WasteEvents']
-        for waster_event in waster_events:
-            yield waster_event
+        waste_events = response['WasteEvents']
+        for waste_event in waste_events:
+            waste_event['GUID'] = current_guid
+            yield waste_event
 
 
 class OrderBySentDate(FullTableStream):
@@ -167,6 +173,7 @@ class OrderBySentDate(FullTableStream):
                                                        end_time=end_time)
         orders = response['Orders']
         for order in orders:
+            order['GUID'] = current_guid
             yield order
 
 STREAMS = {

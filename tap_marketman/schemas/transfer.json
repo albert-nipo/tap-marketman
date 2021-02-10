@@ -26,6 +26,7 @@
                     "UOMName": { "type": ["string", "null"] }
                 }
             }
-        }
+        },
+        "GUID": { "type": ["string"] }
     }
 }

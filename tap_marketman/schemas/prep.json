@@ -42,6 +42,7 @@
         }
         },
         "UpdateDate": { "type": ["string", "null"], "format": "date-time" },
-        "IsDeleted": { "type": "boolean" }
+        "IsDeleted": { "type": "boolean" },
+        "GUID": { "type": ["string"] }
     }
 }
