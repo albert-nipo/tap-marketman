@@ -23,7 +23,7 @@ def sync(config, state, catalog):
                 stream_schema = stream.schema.to_dict()
                 stream_metadata = metadata.to_map(stream.metadata)
 
-                LOGGER.info('Staring sync for stream: %s', tap_stream_id)
+                LOGGER.info(f'Staring sync for stream: {guid}: {tap_stream_id}')
 
                 state = singer.set_currently_syncing(state, tap_stream_id)
                 singer.write_state(state)
@@ -47,17 +47,18 @@ def sync(config, state, catalog):
                         transformed_record
                     )
 
-                current_time = datetime.now(timezone.utc)
+                current_time = datetime.now(
+                    timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
 
                 singer.write_bookmark(
                     stream_obj.state,
                     tap_stream_id,
-                    key,
+                    guid,
                     current_time
                 )
 
                 LOGGER.info(
-                    f'Bookmark created for {tap_stream_id} stream = {key}: {current_time}')
+                    f'Bookmark created for {tap_stream_id} stream = {guid}: {current_time}')
 
     state = singer.set_currently_syncing(state, None)
     singer.write_state(state)
