@@ -29,9 +29,16 @@ class InventoryItem(FullTableStream):
     object_type = 'InventoryItem'
 
     def records_sync(self, guid):
+        bookmark_value = singer.get_bookmark(
+            self.state,
+            self.tap_stream_id,
+            self.key_properties[0]
+        )
+
         current_guid=guid
         response = self.client.get_inventory_items(guid=current_guid)
         inventory_items = response['Items']
+
         for inventory_item in inventory_items:
             yield inventory_item
 
@@ -42,9 +49,16 @@ class MenuItem(FullTableStream):
     object_type = 'MenuItem'
 
     def records_sync(self, guid):
+        bookmark_value = singer.get_bookmark(
+            self.state,
+            self.tap_stream_id,
+            self.key_properties[0]
+        )
+
         current_guid = guid
         response = self.client.get_menu_items(guid=current_guid)
         menu_items = response['Items']
+
         for menu_item in menu_items:
             yield menu_item
 
@@ -55,9 +69,16 @@ class Prep(FullTableStream):
     object_type = 'Prep'
 
     def records_sync(self, guid):
+        bookmark_value = singer.get_bookmark(
+            self.state,
+            self.tap_stream_id,
+            self.key_properties[0]
+        )
+
         current_guid = guid
         response = self.client.get_preps(guid=current_guid)
         preps = response['Items']
+
         for prep in preps:
             yield prep
 
@@ -68,8 +89,15 @@ class Vendor(FullTableStream):
     object_type = 'Vendor'
 
     def records_sync(self, **kwargs):
+        bookmark_value = singer.get_bookmark(
+            self.state,
+            self.tap_stream_id,
+            self.key_properties[0]
+        )
+
         response = self.client.get_vendors()
         vendors = response['Vendors']
+
         for vendor in vendors:
             yield vendor
 
