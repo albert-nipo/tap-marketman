@@ -1,6 +1,8 @@
 import singer
 
+
 LOGGER = singer.get_logger()
+
 
 class Stream:
     tap_stream_id = None
@@ -35,7 +37,7 @@ class InventoryItem(FullTableStream):
             self.key_properties[0]
         )
 
-        current_guid=guid
+        current_guid = guid
         response = self.client.get_inventory_items(guid=current_guid)
         inventory_items = response['Items']
 
@@ -100,6 +102,7 @@ class Vendor(FullTableStream):
 
         for vendor in vendors:
             yield vendor
+
 
 STREAMS = {
     'inventory_item': InventoryItem,
