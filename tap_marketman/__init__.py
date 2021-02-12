@@ -3,7 +3,7 @@ from singer.catalog import write_catalog
 from tap_marketman.discovery import discover
 from tap_marketman.sync import sync
 
-REQUIRED_CONFIG_KEYS = []
+REQUIRED_CONFIG_KEYS = ["apikey", "apipassword"]
 
 
 LOGGER = singer.get_logger()
