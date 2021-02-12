@@ -123,7 +123,7 @@ class Transfer(FullTableStream):
         response = self.client.get_transfers(guid=current_guid,
                                              start_time=start_time,
                                              end_time=end_time)
-        transfers = response['Transfer']
+        transfers = response['Transfers']
         for transfer in transfers:
             transfer['GUID'] = current_guid
             yield transfer
