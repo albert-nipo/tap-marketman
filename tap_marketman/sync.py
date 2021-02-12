@@ -9,7 +9,7 @@ LOGGER = singer.get_logger()
 
 
 def sync(config, state, catalog):
-    client = MarketManClient()
+    client = MarketManClient(config=config)
 
     guids = client.get_guid()
 
