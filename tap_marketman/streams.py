@@ -1,5 +1,5 @@
 import singer
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 LOGGER = singer.get_logger()
 
@@ -165,16 +165,24 @@ class OrderBySentDate(FullTableStream):
                                          current_guid)
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
-        end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
+        # end_time = start_time + 7 days
+        start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
+        end_time = start_time + timedelta(days=14)
         LOGGER.info(
             f'Start time is: {start_time} and the end time is: {end_time}')
-        response = self.client.get_orders_by_sent_date(guid=current_guid,
-                                                       start_time=start_time,
-                                                       end_time=end_time)
-        orders = response['Orders']
-        for order in orders:
-            order['GUID'] = current_guid
-            yield order
+        while start_time <= datetime.now():
+            LOGGER.info(f'Syncing Orders from {start_time} to {end_time} for {current_guid}')
+            response = self.client.get_orders_by_sent_date(guid=current_guid,
+                                                           start_time=datetime.strftime(
+                                                               start_time, "%Y/%m/%d %H:%M:%S"),
+                                                           end_time=datetime.strftime(
+                                                               end_time, "%Y/%m/%d %H:%M:%S"))
+            start_time = end_time
+            end_time = start_time + timedelta(days=14)
+            orders = response['Orders']
+            for order in orders:
+                order['GUID'] = current_guid
+                yield order
 
 STREAMS = {
     'inventory_item': InventoryItem,
