@@ -8,3 +8,4 @@ tests/cassettes
 poetry.lock
 config.json
 test.json
+catalog.json
