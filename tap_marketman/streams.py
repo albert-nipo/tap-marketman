@@ -47,6 +47,7 @@ class MenuItem(FullTableStream):
 
     def records_sync(self, guid):
         current_guid = guid
+        LOGGER.info(f'Sync Menu Items for GUID: {current_guid}')
         response = self.client.get_menu_items(guid=current_guid)
         menu_items = response['Items']
 
@@ -62,6 +63,7 @@ class Prep(FullTableStream):
 
     def records_sync(self, guid):
         current_guid = guid
+        LOGGER.info(f'Sync Prep Items for GUID: {current_guid}')
         response = self.client.get_preps(guid=current_guid)
         preps = response['Items']
 
@@ -89,6 +91,7 @@ class InventoryCount(FullTableStream):
 
     def records_sync(self, guid):
         current_guid = guid
+        LOGGER.info(f'Sync Inventory Count for GUID: {current_guid}')
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
                                          current_guid)
@@ -112,6 +115,7 @@ class Transfer(FullTableStream):
 
     def records_sync(self, guid):
         current_guid = guid
+        LOGGER.info(f'Sync Transfer for GUID: {current_guid}')
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
                                          current_guid)
@@ -136,6 +140,7 @@ class WasteEvent(FullTableStream):
 
     def records_sync(self, guid):
         current_guid = guid
+        LOGGER.info(f'Sync Waste Events for GUID: {current_guid}')
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
                                          current_guid)
