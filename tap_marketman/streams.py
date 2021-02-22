@@ -174,7 +174,7 @@ class OrderBySentDate(FullTableStream):
         current_guid = guid
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
-                                         current_guid['orders'])
+                                         current_guid)
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
         # end_time = start_time + 14 days
@@ -200,8 +200,9 @@ class OrderBySentDate(FullTableStream):
             singer.write_bookmark(
                 self.state,
                 self.tap_stream_id,
-                current_guid['orders'],
-                start_time
+                current_guid,
+                datetime.strftime(
+                    start_time, "%Y/%m/%d %H:%M:%S")
             )
             singer.write_state(self.state)
 
