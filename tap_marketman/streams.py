@@ -97,8 +97,11 @@ class InventoryCount(FullTableStream):
                                          current_guid)
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
+
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
-        LOGGER.info(f'Start time is: {start_time} and the end time is: {end_time}')
+        LOGGER.info(
+            f'Start time is: {start_time} and the end time is: {end_time}')
+
         response = self.client.get_inventory_counts(guid=current_guid,
                                                     start_time=start_time,
                                                     end_time=end_time)
@@ -121,9 +124,11 @@ class Transfer(FullTableStream):
                                          current_guid)
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
+
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
             f'Start time is: {start_time} and the end time is: {end_time}')
+
         response = self.client.get_transfers(guid=current_guid,
                                              start_time=start_time,
                                              end_time=end_time)
@@ -146,9 +151,11 @@ class WasteEvent(FullTableStream):
                                          current_guid)
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
+
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
             f'Start time is: {start_time} and the end time is: {end_time}')
+
         response = self.client.get_waste_events(guid=current_guid,
                                                 start_time=start_time,
                                                 end_time=end_time)
@@ -167,10 +174,11 @@ class OrderBySentDate(FullTableStream):
         current_guid = guid
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
-                                         current_guid)
+                                         current_guid['orders'])
         if start_time == None:
             start_time = '2019/01/01 00:00:00'
-        # end_time = start_time + 7 days
+        # end_time = start_time + 14 days
+        
         start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
         end_time = start_time + timedelta(days=14)
         LOGGER.info(
@@ -188,6 +196,15 @@ class OrderBySentDate(FullTableStream):
             for order in orders:
                 order['GUID'] = current_guid
                 yield order
+
+            singer.write_bookmark(
+                self.state,
+                self.tap_stream_id,
+                current_guid['orders'],
+                start_time
+            )
+            singer.write_state(self.state)
+
 
 STREAMS = {
     'inventory_item': InventoryItem,
