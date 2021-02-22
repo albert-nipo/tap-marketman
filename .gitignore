@@ -9,3 +9,4 @@ poetry.lock
 config.json
 test.json
 catalog.json
+state.json

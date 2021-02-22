@@ -56,6 +56,7 @@ def sync(config, state, catalog):
                     guid,
                     current_time
                 )
+                singer.write_state(state)
 
                 LOGGER.info(
                     f'Bookmark created for {tap_stream_id} stream = {guid}: {current_time}')
