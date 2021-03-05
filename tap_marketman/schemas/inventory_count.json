@@ -21,7 +21,6 @@
                     "TotalValue": { "type": ["number", "null"] }
                 }
             }
-        },
-        "GUID": { "type": ["string"] }
+        }
     }
 }

@@ -107,7 +107,6 @@ class InventoryCount(FullTableStream):
                                                     end_time=end_time)
         inventory_counts = response['InventoryCounts']
         for inventory_count in inventory_counts:
-            inventory_count['GUID'] = current_guid
             yield inventory_count
 
 
@@ -134,7 +133,6 @@ class Transfer(FullTableStream):
                                              end_time=end_time)
         transfers = response['Transfers']
         for transfer in transfers:
-            transfer['GUID'] = current_guid
             yield transfer
 
 
@@ -161,7 +159,6 @@ class WasteEvent(FullTableStream):
                                                 end_time=end_time)
         waste_events = response['WasteEvents']
         for waste_event in waste_events:
-            waste_event['GUID'] = current_guid
             yield waste_event
 
 
@@ -194,7 +191,6 @@ class OrderBySentDate(FullTableStream):
             end_time = start_time + timedelta(days=14)
             orders = response['Orders']
             for order in orders:
-                order['GUID'] = current_guid
                 yield order
 
             singer.write_bookmark(

@@ -36,7 +36,6 @@
                     "PackPerCase": { "type": ["integer", "null"] }
                 }
             }
-        },
-        "GUID": { "type": ["string"] }
+        }
     }
 }
