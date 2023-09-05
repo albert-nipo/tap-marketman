@@ -96,7 +96,7 @@ class InventoryCount(FullTableStream):
                                          self.tap_stream_id,
                                          current_guid)
         if start_time == None:
-            start_time = '2019/01/01 00:00:00'
+            start_time = '2023/05/01 00:00:00'
 
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
@@ -122,7 +122,7 @@ class Transfer(FullTableStream):
                                          self.tap_stream_id,
                                          current_guid)
         if start_time == None:
-            start_time = '2019/01/01 00:00:00'
+            start_time = '2023/05/01 00:00:00'
 
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
@@ -148,7 +148,7 @@ class WasteEvent(FullTableStream):
                                          self.tap_stream_id,
                                          current_guid)
         if start_time == None:
-            start_time = '2019/01/01 00:00:00'
+            start_time = '2023/05/01 00:00:00'
 
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
@@ -158,6 +158,8 @@ class WasteEvent(FullTableStream):
                                                 start_time=start_time,
                                                 end_time=end_time)
         waste_events = response['WasteEvents']
+        if response['IsSuccess'] == False:
+            LOGGER.error(f"fetching Waste Events for GUID: {current_guid} Error message: {response['ErrorMessage']}")
         for waste_event in waste_events:
             yield waste_event
 
@@ -173,7 +175,7 @@ class OrderBySentDate(FullTableStream):
                                          self.tap_stream_id,
                                          current_guid)
         if start_time == None:
-            start_time = '2019/01/01 00:00:00'
+            start_time = '2023/05/01 00:00:00'
         # end_time = start_time + 14 days
         
         start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
