@@ -41,7 +41,8 @@ def extract_guid_chains(guid_data):
     # for chain in guid_data['Chains']:
     #     guid_list.append(chain['Guid'])
     
-    for buyer in guid_data['Chains'][0]['Buyers']:
-        guid_list.append(buyer['Guid'])
+    for chain in guid_data['Chains']:
+        for buyer in chain['Buyers']:
+            guid_list.append(buyer['Guid'])
 
     return guid_list
