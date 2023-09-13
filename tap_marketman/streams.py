@@ -98,6 +98,10 @@ class InventoryCount(FullTableStream):
         if start_time == None:
             start_time = '2023/05/01 00:00:00'
 
+        start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
+        start_time = start_time - timedelta(days=30)
+        start_time = datetime.strftime(start_time, "%Y/%m/%d %H:%M:%S")
+
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
             f'Start time is: {start_time} and the end time is: {end_time}')
@@ -124,6 +128,10 @@ class Transfer(FullTableStream):
         if start_time == None:
             start_time = '2023/05/01 00:00:00'
 
+        start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
+        start_time = start_time - timedelta(days=30)
+        start_time = datetime.strftime(start_time, "%Y/%m/%d %H:%M:%S")
+
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
             f'Start time is: {start_time} and the end time is: {end_time}')
@@ -144,11 +152,17 @@ class WasteEvent(FullTableStream):
     def records_sync(self, guid):
         current_guid = guid
         LOGGER.info(f'Sync Waste Events for GUID: {current_guid}')
+        
         start_time = singer.get_bookmark(self.state,
                                          self.tap_stream_id,
                                          current_guid)
+
         if start_time == None:
             start_time = '2023/05/01 00:00:00'
+
+        start_time = datetime.strptime(start_time, "%Y/%m/%d %H:%M:%S")
+        start_time = start_time - timedelta(days=30)
+        start_time = datetime.strftime(start_time, "%Y/%m/%d %H:%M:%S")
 
         end_time = datetime.now(timezone.utc).strftime("%Y/%m/%d %H:%M:%S")
         LOGGER.info(
@@ -158,8 +172,10 @@ class WasteEvent(FullTableStream):
                                                 start_time=start_time,
                                                 end_time=end_time)
         waste_events = response['WasteEvents']
+
         if response['IsSuccess'] == False:
             LOGGER.error(f"fetching Waste Events for GUID: {current_guid} Error message: {response['ErrorMessage']}")
+            
         for waste_event in waste_events:
             yield waste_event
 
